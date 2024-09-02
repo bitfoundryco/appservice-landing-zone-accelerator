@@ -101,6 +101,8 @@ param autoApproveAfdPrivateEndpoint bool = true
 @description('Optional. Location of private link if not the same as web app location.')
 param privateEndpointLocation string = ''
 
+param deployAfd bool = false
+
 var resourceNames = {
   storageAccount: naming.storageAccount.nameUnique
   vnetSpoke: take('${naming.virtualNetwork.name}-spoke', 80)
@@ -359,7 +361,7 @@ module asePrivateDnsZone '../../shared/bicep/private-dns-zone.bicep' = if ( depl
 }
 
 
-module afd '../../shared/bicep/network/front-door.bicep' = {
+module afd '../../shared/bicep/network/front-door.bicep' = if (deployAfd) {
   name: take ('AzureFrontDoor-${resourceNames.frontDoor}-deployment', 64)
   params: {
     afdName: resourceNames.frontDoor
@@ -383,7 +385,7 @@ module afd '../../shared/bicep/network/front-door.bicep' = {
   }
 }
 
-module autoApproveAfdPe 'modules/approve-afd-pe.module.bicep' = if (autoApproveAfdPrivateEndpoint) {
+module autoApproveAfdPe 'modules/approve-afd-pe.module.bicep' = if (deployAfd && autoApproveAfdPrivateEndpoint) {
   name: take ('autoApproveAfdPe-${resourceNames.frontDoor}-deployment', 64)
   params: { 
     location: location
