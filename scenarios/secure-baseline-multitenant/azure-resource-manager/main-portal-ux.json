@@ -1208,6 +1208,7 @@
                 "subnetHubFirewallManagementAddressSpace": "[steps('networking').subnetHubFirewallManagementAddressSpace]",
                 "subnetHubBastionAddressSpace": "[steps('networking').subnetHubBastionAddressSpace]",
                 "vnetSpokeAddressSpace": "[steps('networking').vnetSpokeAddressSpace]",
+                "privateLinkLocation": "[steps('networking').privateLinkLocation]",
                 "subnetSpokeAppSvcAddressSpace": "[if( equals ( steps('basics').appSvcPlanSection.deployAseV3, true), steps('networking').subnetSpokeAppSvcAddressSpaceAse , steps('networking').subnetSpokeAppSvcAddressSpace )]",
                 "subnetSpokeDevOpsAddressSpace": "[steps('networking').subnetSpokeDevOpsAddressSpace]",
                 "subnetSpokePrivateEndpointAddressSpace": "[steps('networking').subnetSpokePrivateEndpointAddressSpace]",
