@@ -153,7 +153,6 @@ var diagnosticsMetrics = [for metric in diagnosticMetricsToEnable: {
 @description('Optional. The name of the diagnostic setting, if deployed.')
 param diagnosticSettingsName string = '${afdName}-diagnosticSettings'
 
-
 resource profile 'Microsoft.Cdn/profiles@2022-11-01-preview' = {
   name: afdName
   location: 'Global'

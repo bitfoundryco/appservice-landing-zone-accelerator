@@ -98,6 +98,9 @@ param sqlAdminPassword string = ''
 @description('set to true if you want to auto approve the Private Endpoint of the AFD')
 param autoApproveAfdPrivateEndpoint bool = true
 
+@description('Optional. Location of private link if not the same as web app location.')
+param privateEndpointLocation string = ''
+
 var resourceNames = {
   storageAccount: naming.storageAccount.nameUnique
   vnetSpoke: take('${naming.virtualNetwork.name}-spoke', 80)
@@ -371,7 +374,7 @@ module afd '../../shared/bicep/network/front-door.bicep' = {
           privateLinkOrigin: {
             privateEndpointResourceId: webApp.outputs.webAppResourceId
             privateLinkResourceType: 'sites'
-            privateEndpointLocation: webApp.outputs.webAppLocation
+            privateEndpointLocation: privateEndpointLocation != '' ? privateEndpointLocation : webApp.outputs.webAppLocation
           }
       }
     ]

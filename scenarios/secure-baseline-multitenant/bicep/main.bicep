@@ -122,6 +122,12 @@ param installSsms bool = false
 @description('set to true if you want to auto approve the Private Endpoint of the AFD')
 param autoApproveAfdPrivateEndpoint bool = true
 
+@allowed([
+  'eastasia'
+  ''
+])
+@description('Optional. Location of private link if not the same as web app location.')
+param privateEndpointLocation string = ''
 
 
 // ================ //
@@ -233,6 +239,7 @@ module spoke 'deploy.spoke.bicep' = {
     adoToken: adoToken
     installClis: installClis
     installSsms: installSsms 
+    privateEndpointLocation: privateEndpointLocation
   }
 }
 
