@@ -235,7 +235,7 @@ resource afdOrigins 'Microsoft.Cdn/profiles/originGroups/origins@2022-11-01-prev
         id: origin.privateLinkOrigin.privateEndpointResourceId
       }
       groupId: (origin.privateLinkOrigin.privateLinkResourceType != '') ? origin.privateLinkOrigin.privateLinkResourceType : null
-      privateLinkLocation: origin.privateLinkOrigin.privateEndpointLocation
+      privateLinkLocation: 'eastasia'
       requestMessage: 'Please approve this connection.'
     }
   }
