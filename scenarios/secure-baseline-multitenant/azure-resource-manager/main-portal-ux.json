@@ -480,6 +480,22 @@
                             ]
                         },
                         {
+                            "name": "privateLinkLocation",
+                            "type": "Microsoft.Common.TextBox",
+                            "label": "Location of private link if not the same as web app location.",
+                            "subLabel": "",
+                            "defaultValue": "",
+                            "toolTip": "eastasia",
+                            "constraints": {
+                                "required": false,
+                                "regex": "",
+                                "validationMessage": "",
+                                "validations": []
+                            },
+                            "infoMessages": [],
+                            "visible": true
+                        },
+                        {
                             "name": "vnetSpokeAddressSpace",
                             "type": "Microsoft.Common.TextBox",
                             "label": "Spoke Virtual Network Address Space",
