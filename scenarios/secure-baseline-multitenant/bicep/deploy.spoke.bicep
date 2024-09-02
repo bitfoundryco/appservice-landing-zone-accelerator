@@ -374,7 +374,7 @@ module afd '../../shared/bicep/network/front-door.bicep' = {
           privateLinkOrigin: {
             privateEndpointResourceId: webApp.outputs.webAppResourceId
             privateLinkResourceType: 'sites'
-            privateEndpointLocation: privateEndpointLocation != '' ? privateEndpointLocation : webApp.outputs.webAppLocation
+            privateEndpointLocation: 'eastasia'
           }
       }
     ]
